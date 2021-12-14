@@ -1,12 +1,12 @@
 # SQLAlchemy
 ![](../../images/sqlalchemy-logo.png)
- 
+
 - [Introduction](#introduction)
 - [Requirements](#requirements)
 - [BeforeExecuteFactory](#BeforeExecuteFactory)
 - [Fields](#fields)
 - [End to end examples](#end-to-end-examples)
-- [With flask](#with-flask)
+- [With Flask](#with-flask)
 - [References](#references)
 
 ## Introduction
@@ -29,7 +29,7 @@ We provide options such as `with_opencensus` because
 
 ### Pip
 ``` 
-pip3 install google-cloud-sqlcommenter
+pip3 install opentelemetry-sqlcommenter
 ```
 ### Source
 ```
@@ -45,7 +45,7 @@ and then we shall perform the following imports in our source code:
 
 ```python
 from sqlalchemy import create_engine, event
-from sqlcommenter.sqlalchemy.executor import BeforeExecuteFactory
+from opentelemetry.sqlcommenter.sqlalchemy.executor import BeforeExecuteFactory
 
 engine = create_engine(...) # Create the engine with your dialect of SQL
 event.listen(engine, 'before_cursor_execute', BeforeExecuteFactory(), retval=True)
@@ -91,10 +91,20 @@ Field|Description|Included by default
 
 #### With OpenCensus
 ```python
-#!/usr/bin/env python3
-
 from sqlalchemy import create_engine, event
-from google.cloud.sqlcommenter.sqlalchemy.executor import BeforeExecuteFactory
+from opentelemetry.sqlcommenter.sqlalchemy.executor import BeforeExecuteFactory
+from opencensus.trace.samplers import AlwaysOnSampler
+from opencensus.trace.tracer import Tracer
+
+DB_URL = '...'  # DB connection info
+
+class NoopExporter():
+    def emit(self, *args, **kwargs):
+        pass
+
+    def export(self, *args, **kwargs):
+        pass
+
 
 def main():
     tracer = Tracer(exporter=NoopExporter, sampler=AlwaysOnSampler())
@@ -108,6 +118,7 @@ def main():
         for row in result:
             print(row)
 
+
 if __name__ == '__main__':
     main()
 ```
@@ -116,7 +127,7 @@ if __name__ == '__main__':
 #!/usr/bin/env python3
 
 from sqlalchemy import create_engine, event
-from google.cloud.sqlcommenter.sqlalchemy.executor import BeforeExecuteFactory
+from opentelemetry.sqlcommenter.sqlalchemy.executor import BeforeExecuteFactory
 
 DB_URL = '...'  # DB connection info
 
@@ -139,7 +150,7 @@ if __name__ == '__main__':
 #!/usr/bin/env python3
 
 from sqlalchemy import create_engine, event
-from google.cloud.sqlcommenter.sqlalchemy.executor import BeforeExecuteFactory
+from opentelemetry.sqlcommenter.sqlalchemy.executor import BeforeExecuteFactory
 
 DB_URL = '...'  # DB connection info
 
@@ -189,16 +200,14 @@ Examining our Postgresql server logs
 /*db_driver='psycopg2'*/
 ```
 
-### With flask
-When coupled with the web framework [flask](http://flask.pocoo.org), we still provide middleware to correlate
-your web applications with your SQL statements from psycopg2. Please see this end-to-end guide below:<br>
+### With Flask
+When coupled with the web framework [flask](http://flask.pocoo.org), we provide a class (`BeforeExecuteFactory`) to correlate your web applications with your SQL statements from psycopg2.
 [![](../../images/flask-logo.png)](../flask/#with-psycopg2)
-
 ### References
 
 Resource|URL
 ---|---
-sqlcommenter-sqlalchemy on PyPi|<https://pypi.org/project/google-cloud-sqlcommenter>
+sqlcommenter-sqlalchemy on PyPi|<https://pypi.org/project/opentelemetry-sqlcommenter>
 sqlcommenter-sqlalchemy on Github|<https://github.com/open-telemetry/opentelemetry-sqlcommenter>
 OpenCensus|<https://opencensus.io/>
 OpenCensus SpanID|<https://opencensus.io/tracing/span/spanid>
