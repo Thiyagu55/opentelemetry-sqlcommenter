@@ -1,4 +1,4 @@
-# sqlcommenterr
+# sqlcommenter
 
 sqlcommenter is a suite of plugins/middleware/wrappers to augment SQL statements from ORMs/Querybuilders
 with comments that can be used later to correlate user code with SQL statements.
