@@ -5,6 +5,7 @@ on:
       - 'nodejs/**'
     branches:
       - main
+      - test-ci
 
 jobs:
   build:
