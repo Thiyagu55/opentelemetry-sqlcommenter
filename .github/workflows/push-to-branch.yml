@@ -3,6 +3,8 @@ on:
   push:
     paths:
       - 'nodejs/**'
+    branches:
+      - main
 
 jobs:
   build:
