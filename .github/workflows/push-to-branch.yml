@@ -1,0 +1,19 @@
+name: Deploy Site
+on:
+  push:
+    paths:
+      - 'nodejs/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@test-ci
+      with:
+        submodules: recursive
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./nodejs
+        publish_branch: nodejs
