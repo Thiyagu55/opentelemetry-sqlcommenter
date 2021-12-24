@@ -1,4 +1,4 @@
-name: Deploy Site
+name: Nodejs CI
 on:
   push:
     paths:
@@ -11,12 +11,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
       with:
         submodules: recursive
-    - name: Deploy
+    - name: Push to branch
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./nodejs
-        publish_branch: nodejs
+        publish_dir: ./nodejs/sqlcommenter-nodejs
+        publish_branch: sqlcommenter-nodejs
