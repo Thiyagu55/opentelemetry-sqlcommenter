@@ -14,7 +14,8 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://registry.npmjs.org'
-          
+                               
+      # Publish SQLCommenter Sequelize        
       - run: npm ci
         working-directory: ./packages/sqlcommenter-knex
 

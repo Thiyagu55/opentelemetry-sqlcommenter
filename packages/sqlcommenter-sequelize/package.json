@@ -1,6 +1,6 @@
 {
-  "name": "@google-cloud/sqlcommenter-sequelize",
-  "version": "1.0.0",
+  "name": "@testopentelemetry/sqlcommenter-sequelize",
+  "version": "1.9.0",
   "description": "Middleware and wrappers to correlate SQL statements from Sequelize.js and Express.js",
   "main": "index.js",
   "directories": {
