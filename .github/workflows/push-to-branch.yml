@@ -4,7 +4,7 @@ on:
     paths:
       - 'python/**'
     branches:
-      - main
+      - test-ci
 
 jobs:
   build:
