@@ -1,5 +1,5 @@
 {
-  "name": "@google-cloud/sqlcommenter-knex",
+  "name": "@testopentelemetry/sqlcommenter-knex",
   "version": "1.0.0",
   "description": "Middleware and wrappers to correlate SQL statements from Knex.js and Express.js",
   "main": "index.js",
