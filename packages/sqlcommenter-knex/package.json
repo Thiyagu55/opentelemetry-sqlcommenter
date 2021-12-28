@@ -1,6 +1,6 @@
 {
   "name": "@testopentelemetry/sqlcommenter-knex",
-  "version": "1.9.1",
+  "version": "2.9.1",
   "description": "Middleware and wrappers to correlate SQL statements from Knex.js and Express.js",
   "main": "index.js",
   "directories": {
