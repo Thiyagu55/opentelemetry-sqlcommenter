@@ -1,4 +1,4 @@
-## Postgres sample with OpenTelemetry
+ ## Postgres sample with OpenTelemetry
 To run the sample:
 ```bash
 # Create virtualenv and install dependencies
