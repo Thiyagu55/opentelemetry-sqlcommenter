@@ -1,5 +1,5 @@
 #  Python
-sqlcommenter support is available in Python for the following frameworks/ORMs:
+ sqlcommenter support is available in Python for the following frameworks/ORMs:
 
 [![](../images/django-logo.png)](../python/django)
 [![](../images/psycopg2-logo.png)](../python/psycopg2)
