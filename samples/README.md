@@ -1,5 +1,5 @@
  ## Postgres sample with OpenTelemetry
-To run the sample:
+To run the sample with few simple steps:
 ```bash
 # Create virtualenv and install dependencies
 python3 -m venv venv
