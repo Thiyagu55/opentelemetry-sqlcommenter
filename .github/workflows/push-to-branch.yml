@@ -17,6 +17,6 @@ jobs:
     - name: Push to branch
       uses: peaceiris/actions-gh-pages@v3
       with:
-        deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
+        personal_token: ${{ secrets.PESRSONAL_ACCESS_TOKEN }}
         publish_dir: ./python
         publish_branch: python-sqlcommenter
